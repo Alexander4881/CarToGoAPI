@@ -22,6 +22,7 @@ namespace CarToGoAPI.Model
         public string CreditCardHolder { get => creditCardHolder; set => creditCardHolder = value; }
         public DateTime ExpiryDate { get => expiryDate; set => expiryDate = value; }
         public string Ccv { get => ccv; set => ccv = value; }
+        public Customer Customer { get; set; }
 
         // constructor
         public CreditCard(){}

@@ -27,15 +27,18 @@ namespace CarToGoAPI.Model
         public string Address { get => address; set => address = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public DateTime BithDate { get => bithDate; set => bithDate = value; }
-        public DateTime DirversLicens { get => dirversLicens; set => dirversLicens = value; }
 
-        public ICollection<DirversLicens> DirversLicenes { get; set; }
+        public ICollection<DriversLicens> DriversLicens { get; set; }
         public ICollection<CreditCard> CreditCards { get; set; }
 
         // Constructor
-        public Customer(){}
+        public Customer()
+        {
+            DriversLicens = new List<DriversLicens>();
+            CreditCards = new List<CreditCard>();
+        }
 
-        public Customer(string email, string password, bool sex, string address, string phoneNumber, DateTime bithDate, DateTime dirversLicens)
+        public Customer(string email, string password, bool sex, string address, string phoneNumber, DateTime bithDate)
         {
             Email = email;
             Password = password;
@@ -43,7 +46,8 @@ namespace CarToGoAPI.Model
             Address = address;
             PhoneNumber = phoneNumber;
             BithDate = bithDate;
-            DirversLicens = dirversLicens;
+            DriversLicens = new List<DriversLicens>();
+            CreditCards = new List<CreditCard>();
         }
     }
 }

@@ -25,6 +25,17 @@ namespace CarToGoAPI.Controllers
         {
             Arduino arduino = null;
 
+            //CreditCard creditCard = new CreditCard("101010101010", "Test User", new DateTime(1998, 08, 09), "997");
+            //DriversLicens driversLicens = new DriversLicens("000889998", "Denmark", DateTime.Now, DateTime.Now.AddDays(1));
+            //Customer customer = new Customer("temp@mail.com", "temp", false, "temp address", "88888888",DateTime.Now);
+
+            //customer.CreditCards.Add(creditCard);
+            //customer.DriversLicens.Add(driversLicens);
+
+            //DatabaseContext.Instance.CreditCards.Add(creditCard);
+            //DatabaseContext.Instance.DirversLicenes.Add(driversLicens);
+            //DatabaseContext.Instance.Customers.Add(customer);
+
             Arduino newArduino = new Arduino("First Arduino Thing", DateTime.Now, "The First Thingy");
 
             DatabaseContext.Instance.Arduinos.Add(newArduino);
@@ -43,7 +54,7 @@ namespace CarToGoAPI.Controllers
 
                 return JsonSerializer.Serialize(arduino) + " Connection String " + DatabaseContext.Instance.Database.Connection.ConnectionString;
             }
-            return "nothing found on id:" + id + " Connection String " + DatabaseContext.Instance.Database.Connection;
+            return "nothing found on id:" + id + " Connection String " + DatabaseContext.Instance.Database.Connection.ConnectionString;
         }
 
         // POST: Test

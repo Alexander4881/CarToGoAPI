@@ -23,6 +23,8 @@ namespace CarToGoAPI.Model
         public float GetDistanceLeft { get => getDistanceLeft; set => getDistanceLeft = value; }
         public long TotalKMDriven { get => totalKMDriven; set => totalKMDriven = value; }
         public int ID { get; set; }
+        public Car Car { get; set; }
+
 
         // constructor
         public EletricEngine() { }

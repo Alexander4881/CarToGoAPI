@@ -14,19 +14,19 @@ namespace CarToGoAPI.Model
         private string model;
         private double pricePerKM;
         private double pricePerMin;
-        private CarBand carBand;
+        private CarBrand carBand;
 
         // Properties
         public int ID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Model { get => model; set => model = value; }
         public double PricePerKM { get => pricePerKM; set => pricePerKM = value; }
         public double PricePerMin { get => pricePerMin; set => pricePerMin = value; }
-        internal CarBand CarBand { get => carBand; set => carBand = value; }
+        internal CarBrand CarBand { get => carBand; set => carBand = value; }
 
         // Constructors
         public CarModel() { }
 
-        public CarModel(string model, double pricePerKM, double pricePerMin, CarBand carBand)
+        public CarModel(string model, double pricePerKM, double pricePerMin, CarBrand carBand)
         {
             Model = model;
             PricePerKM = pricePerKM;

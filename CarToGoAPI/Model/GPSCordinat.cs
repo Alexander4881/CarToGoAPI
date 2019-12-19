@@ -13,13 +13,13 @@ namespace CarToGoAPI.Model
         // Attributes
         private long longitude;
         private long latitude;
-        private DateTime reciced;
+        private DateTime received;
 
         // Properties
         public int ID { get; set; }
         public long Longitude { get => longitude; set => longitude = value; }
         public long Latitude { get => latitude; set => latitude = value; }
-        public DateTime Reciced { get => reciced; set => reciced = value; }
+        public DateTime Received { get => received; set => received = value; }
 
         // Constructors
         public GPSCordinat() { }
@@ -27,7 +27,7 @@ namespace CarToGoAPI.Model
         {
             Longitude = longitude;
             Latitude = latitude;
-            Reciced = reciced;
+            Received = reciced;
         }
     }
 }

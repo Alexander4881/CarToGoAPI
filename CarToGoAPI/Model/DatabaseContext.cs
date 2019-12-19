@@ -28,7 +28,7 @@ namespace CarToGoAPI.Model
         public DbSet<GPSCordinat> GPSCordinats { get; set; }
         public DbSet<OrderdCars> OrderdCars { get; set; }
         public DbSet<CarModel> CarModels { get; set; }
-        public DbSet<CarBand> CarBands { get; set; }
+        public DbSet<CarBrand> CarBrands { get; set; }
         public DbSet<EletricEngine> EletricEngines { get; set; }
         public DbSet<Customer> Customers { get; set; }
         // singleton

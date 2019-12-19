@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CarToGoAPI.Model
 {
     [Table("CarBrand")]
-    public class CarBand : IEntity
+    public class CarBrand : IEntity
     {
         // Attributes
         private string name;
@@ -14,9 +14,9 @@ namespace CarToGoAPI.Model
         public int ID { get; set; }
 
         // Constructor
-        public CarBand() { }
+        public CarBrand() { }
 
-        public CarBand(string name)
+        public CarBrand(string name)
         {
             Name = name;
         }

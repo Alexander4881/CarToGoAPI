@@ -9,32 +9,14 @@ using System.Threading.Tasks;
 namespace CarToGoAPI.Model
 {
     [Table("EletricEngine")]
-    public class EletricEngine : IEngine, IEntity
+    public class EletricEngine : IEntity
     {
-        // attributes
-        private float getMaxDistance;
-        private float getCurrentDistance;
-        private float getDistanceLeft;
-        private long totalKMDriven;
 
         // properties
-        public float GetMaxDistance { get => getMaxDistance; set => getMaxDistance = value; }
-        public float GetCurrentDistance { get => getCurrentDistance; set => getCurrentDistance = value; }
-        public float GetDistanceLeft { get => getDistanceLeft; set => getDistanceLeft = value; }
-        public long TotalKMDriven { get => totalKMDriven; set => totalKMDriven = value; }
         public int ID { get; set; }
-        public Car Car { get; set; }
+        public float EnergyLeft { get; set; }
+        public float KMsAvailable { get; set; }
+        public virtual Car Car { get; set; }
 
-
-        // constructor
-        public EletricEngine() { }
-
-        public EletricEngine(float getMaxDistance, float getCurrentDistance, float getDistanceLeft, long totalKMDriven)
-        {
-            GetMaxDistance = getMaxDistance;
-            GetCurrentDistance = getCurrentDistance;
-            GetDistanceLeft = getDistanceLeft;
-            TotalKMDriven = totalKMDriven;
-        }
     }
 }

@@ -42,11 +42,11 @@ namespace CarToGoAPI.Repository
             {
                 if (DatabaseContext.Instance.EletricEngines.ElementAt(i).ID == entity.ID)
                 {
-                    DatabaseContext.Instance.EletricEngines.ElementAt(i).GetMaxDistance = entity.GetMaxDistance;
-                    DatabaseContext.Instance.EletricEngines.ElementAt(i).GetDistanceLeft = entity.GetDistanceLeft;
-                    DatabaseContext.Instance.EletricEngines.ElementAt(i).GetCurrentDistance = entity.GetCurrentDistance;
-                    DatabaseContext.Instance.EletricEngines.ElementAt(i).Car = entity.Car;
-                    DatabaseContext.Instance.EletricEngines.ElementAt(i).TotalKMDriven = entity.TotalKMDriven;
+                    //DatabaseContext.Instance.EletricEngines.ElementAt(i).GetMaxDistance = entity.GetMaxDistance;
+                    ////DatabaseContext.Instance.EletricEngines.ElementAt(i).GetDistanceLeft = entity.GetDistanceLeft;
+                    //DatabaseContext.Instance.EletricEngines.ElementAt(i).GetCurrentDistance = entity.GetCurrentDistance;
+                    //DatabaseContext.Instance.EletricEngines.ElementAt(i).Car = entity.Car;
+                    //DatabaseContext.Instance.EletricEngines.ElementAt(i).TotalKMDriven = entity.TotalKMDriven;
                 }
             }
         }

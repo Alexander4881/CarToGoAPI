@@ -10,28 +10,17 @@ namespace CarToGoAPI.Model
     [Table("CarModel")]
     public class CarModel : IEntity
     {
-        // Attributes
-        private string model;
-        private double pricePerKM;
-        private double pricePerMin;
-        private CarBrand carBand;
 
         // Properties
-        public int ID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Model { get => model; set => model = value; }
-        public double PricePerKM { get => pricePerKM; set => pricePerKM = value; }
-        public double PricePerMin { get => pricePerMin; set => pricePerMin = value; }
-        internal CarBrand CarBand { get => carBand; set => carBand = value; }
+        public int ID { get; set; }
+        public string Model { get; set; }
+        public double PricePerKM { get; set; }
+        public double PricePerMin { get; set; }
 
-        // Constructors
-        public CarModel() { }
+        public int CarBandId { get; set; }
 
-        public CarModel(string model, double pricePerKM, double pricePerMin, CarBrand carBand)
-        {
-            Model = model;
-            PricePerKM = pricePerKM;
-            PricePerMin = pricePerMin;
-            CarBand = carBand;
-        }
+        public virtual CarBrand CarBrand { get; set; }
+        public ICollection<Car> Car { get; set; }
+
     }
 }

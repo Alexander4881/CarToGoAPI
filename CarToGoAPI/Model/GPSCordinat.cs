@@ -10,24 +10,14 @@ namespace CarToGoAPI.Model
     [Table("GPSCordinat")]
     public class GPSCordinat : IEntity
     {
-        // Attributes
-        private long longitude;
-        private long latitude;
-        private DateTime received;
-
         // Properties
-        public int ID { get; set; }
-        public long Longitude { get => longitude; set => longitude = value; }
-        public long Latitude { get => latitude; set => latitude = value; }
-        public DateTime Received { get => received; set => received = value; }
+        public int ID { get; set; }        
+        public Decimal Latitude { get; set; }        
+        public Decimal Longitude { get; set; }        
+        public DateTime Received { get; set; }
 
-        // Constructors
-        public GPSCordinat() { }
-        public GPSCordinat(long longitude, long latitude, DateTime reciced)
-        {
-            Longitude = longitude;
-            Latitude = latitude;
-            Received = reciced;
-        }
+        public virtual Car Car { get; set; }
+
+
     }
 }

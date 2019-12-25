@@ -20,9 +20,16 @@ namespace CarToGoAPI.Controllers
         }
 
         // GET: Test/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public string Get(int id)
         {
+            TimeZoneInfo localZone = TimeZoneInfo.Local;
+            string res1 = "Local Time Zone ID: {0}" + localZone.Id;
+            res1 = res1 + "   Display Name is: {0}." + localZone.DisplayName;
+            res1 = res1 + "   Standard name is: {0}." +  localZone.StandardName;
+            res1 = res1 + "   Daylight saving name is: {0}." +  localZone.DaylightName;
+            return res1;
+
             Arduino arduino = null;
 
             //CreditCard creditCard = new CreditCard("101010101010", "Test User", new DateTime(1998, 08, 09), "997");

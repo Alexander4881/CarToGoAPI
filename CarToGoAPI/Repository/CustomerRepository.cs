@@ -36,11 +36,31 @@ namespace CarToGoAPI.Repository
             return null;
         }
 
+        public Customer FindByEmailAndPW(string email, string pw)
+        {
+            // loop through the customers
+            foreach (Customer customer in DatabaseContext.Instance.Customers)
+            {
+                // check the id
+                if ( (customer.Email == email) && (customer.Password == pw) )
+                {
+                    // return the customers
+                    return customer;
+                }
+            }
+            return null;
+
+        }
         public List<Customer> GetAll()
         {
             // return a list of customers 
-            return DatabaseContext.Instance.Customers.ToList();
+            return DatabaseContext.Instance.Customers.ToList();            
         }
+
+        public void Add(Customer entity) {
+            DatabaseContext.Instance.Customers.Add(entity);        
+        }
+
 
         public void Update(Customer entity)
         {
@@ -56,8 +76,8 @@ namespace CarToGoAPI.Repository
                     DatabaseContext.Instance.Customers.ElementAt(i).Sex = entity.Sex;
                     DatabaseContext.Instance.Customers.ElementAt(i).Address = entity.Address;
                     DatabaseContext.Instance.Customers.ElementAt(i).BithDate = entity.BithDate;
-                    DatabaseContext.Instance.Customers.ElementAt(i).CreditCards = entity.CreditCards;
-                    DatabaseContext.Instance.Customers.ElementAt(i).DriversLicens = entity.DriversLicens;
+                    //DatabaseContext.Instance.Customers.ElementAt(i).CreditCards = entity.CreditCards;
+                    //DatabaseContext.Instance.Customers.ElementAt(i).DriversLicens = entity.DriversLicens;
                     DatabaseContext.Instance.Customers.ElementAt(i).Email = entity.Email;
                 }
             }

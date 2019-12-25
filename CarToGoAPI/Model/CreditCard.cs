@@ -10,29 +10,15 @@ namespace CarToGoAPI.Model
     [Table("CreditCard")]
     public class CreditCard : IEntity
     {
-        // Attributes
-        private string creditCardNumber;
-        private string creditCardHolder;
-        private DateTime expiryDate;
-        private string ccv;
-
         // Properties
         public int ID { get; set; }
-        public string CreditCardNumber { get => creditCardNumber; set => creditCardNumber = value; }
-        public string CreditCardHolder { get => creditCardHolder; set => creditCardHolder = value; }
-        public DateTime ExpiryDate { get => expiryDate; set => expiryDate = value; }
-        public string Ccv { get => ccv; set => ccv = value; }
-        public Customer Customer { get; set; }
+        public string CreditCardNumber { get; set; }
+        public string CreditCardHolder { get; set; }
+        public DateTime ExpiryDate { get; set; }
+        public string Ccv { get; set; }
 
-        // constructor
-        public CreditCard(){}
+        public virtual Customer Customer { get; set; }
 
-        public CreditCard(string creditCardNumber, string creditCardHolder, DateTime expiryDate, string ccv)
-        {
-            CreditCardNumber = creditCardNumber;
-            CreditCardHolder = creditCardHolder;
-            ExpiryDate = expiryDate;
-            Ccv = ccv;
-        }
+
     }
 }

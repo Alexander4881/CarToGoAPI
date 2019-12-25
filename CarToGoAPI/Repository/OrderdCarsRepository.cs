@@ -31,6 +31,11 @@ namespace CarToGoAPI.Repository
             return null;
         }
 
+        public void Add(OrderdCars entity)
+        {
+            DatabaseContext.Instance.OrderdCars.Add(entity);
+        }
+
         public List<OrderdCars> GetAll()
         {
             return DatabaseContext.Instance.OrderdCars.ToList();
@@ -43,10 +48,10 @@ namespace CarToGoAPI.Repository
                 if (DatabaseContext.Instance.OrderdCars.ElementAt(i).ID == entity.ID)
                 {
                     DatabaseContext.Instance.OrderdCars.ElementAt(i).OrderNumber = entity.OrderNumber;
-                    DatabaseContext.Instance.OrderdCars.ElementAt(i).StarteTime = entity.StarteTime;
-                    DatabaseContext.Instance.OrderdCars.ElementAt(i).EndTime = entity.EndTime;
+                    //DatabaseContext.Instance.OrderdCars.ElementAt(i).StarteTime = entity.StarteTime;
+                    //DatabaseContext.Instance.OrderdCars.ElementAt(i).EndTime = entity.EndTime;
                     DatabaseContext.Instance.OrderdCars.ElementAt(i).DrivenKM = entity.DrivenKM;
-                    DatabaseContext.Instance.OrderdCars.ElementAt(i).CreateDate = entity.CreateDate;
+                    //DatabaseContext.Instance.OrderdCars.ElementAt(i).CreateDate = entity.CreateDate;
                     DatabaseContext.Instance.OrderdCars.ElementAt(i).CarID = entity.CarID;
                 }
             }

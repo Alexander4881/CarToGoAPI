@@ -10,28 +10,37 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarToGoAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CarController : ControllerBase
     {
-        // GET: api/Car
+        // GET: Car
+        //        public IEnumerable<string> Get()
+
         [HttpGet]
-        public string Get()
+        public IEnumerable<Car> Get()
         {
-            using (CustomerRepository cr = new CustomerRepository())
+            //using (CustomerRepository cr = new CustomerRepository())
+            //{
+            //    return JsonSerializer.Serialize(cr.GetAll());
+            //}
+            using (CarRepository ca = new CarRepository()) 
             {
-                return JsonSerializer.Serialize(cr.GetAll());
+                return ca.GetAll();
             }
+                //return JsonSerializer.Serialize(DatabaseContext.Instance.Cars);
         }
 
-        // GET: api/Car/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // GET: Car/5
+        [HttpGet("{id}")]
+        public ActionResult<Car> Get(int id)
         {
-            using (CustomerRepository cr = new CustomerRepository())
+            //return "value";
+            using (CarRepository ca = new CarRepository())
             {
-                Customer customer = cr.FindById(id);
-                return JsonSerializer.Serialize(customer);
+                Car car = ca.FindById(id);
+                return car;
+                //return JsonSerializer.Serialize(customer);
             }
         }
     }

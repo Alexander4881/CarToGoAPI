@@ -10,38 +10,29 @@ namespace CarToGoAPI.Model
     [Table("Car")]
     public class Car : IEntity
     {
-        // attributes
-        private CarModel carModel;
-        private string licensePlate;
-        private IEngine engin;
-        private bool animalsAllowed;
-        private int status;
-        private float totalKM;
 
         // properties
         public int ID { get; set; }
-        public string LicensePlate { get => licensePlate; set => licensePlate = value; }
-        public bool AnimalsAllowed { get => animalsAllowed; set => animalsAllowed = value; }
-        public int Status { get => status; set => status = value; }
-        public float TotalKM { get => totalKM; set => totalKM = value; }
+        public string LicensePlate { get; set; }
+        public bool AnimalsAllowed { get; set; }
+        public int Status { get; set; }
+        public float TotalKM { get; set; }
 
-        public IEngine Engin { get => engin; set => engin = value; }
-        public CarModel CarModel { get => carModel; set => carModel = value; }
-        public ICollection<OrderdCars> Orders { get; set; }
-        public ICollection<GPSCordinat> GPSCordinates {get;set;}
+        //public IEngine Engin { get => engin; set => engin = value; }
+
+        public int CarModelId { get; set; }
+
+        public virtual CarModel CarModel { get; set; }
+
+        public virtual EletricEngine EletricEngine { get; set; }
+
+        public virtual GPSCordinat GPSCordinat { get; set; }
+
+
+        public ICollection<OrderdCars> OrderdCars { get; set; }
+        ///public ICollection<GPSCordinat> GPSCordinates {get;set;}
 
         // constructor
-        public Car(CarModel carModel, string licensePlate, IEngine engin, bool animalsAllowed, int status, float totalKM, ICollection<OrderdCars> orders, ICollection<GPSCordinat> gPSCordinates)
-        {
-            CarModel = carModel;
-            LicensePlate = licensePlate;
-            Engin = engin;
-            AnimalsAllowed = animalsAllowed;
-            Status = status;
-            TotalKM = totalKM;
-            Orders = orders;
-            GPSCordinates = gPSCordinates;
-        }
 
         // Methods
         public bool UnlockCar(int pin)

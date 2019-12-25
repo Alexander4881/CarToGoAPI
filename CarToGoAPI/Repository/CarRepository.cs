@@ -44,14 +44,14 @@ namespace CarToGoAPI.Repository
                 if (DatabaseContext.Instance.Cars.ElementAt(i).ID == entity.ID)
                 {
                     // TODO make pritty
-                    DatabaseContext.Instance.Cars.ElementAt(i).GPSCordinates = entity.GPSCordinates;
+                    //DatabaseContext.Instance.Cars.ElementAt(i).GPSCordinates = entity.GPSCordinates;
                     DatabaseContext.Instance.Cars.ElementAt(i).LicensePlate = entity.LicensePlate;
-                    DatabaseContext.Instance.Cars.ElementAt(i).Orders = entity.Orders;
+                    //DatabaseContext.Instance.Cars.ElementAt(i).Orders = entity.Orders;
                     DatabaseContext.Instance.Cars.ElementAt(i).Status = entity.Status;
                     DatabaseContext.Instance.Cars.ElementAt(i).TotalKM = entity.TotalKM;
                     DatabaseContext.Instance.Cars.ElementAt(i).AnimalsAllowed = entity.AnimalsAllowed;
                     DatabaseContext.Instance.Cars.ElementAt(i).CarModel = entity.CarModel;
-                    DatabaseContext.Instance.Cars.ElementAt(i).Engin = entity.Engin;
+                    //DatabaseContext.Instance.Cars.ElementAt(i).Engin = entity.Engin;
                 }
             }
         }

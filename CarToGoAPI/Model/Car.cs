@@ -15,6 +15,13 @@ namespace CarToGoAPI.Model
         public int ID { get; set; }
         public string LicensePlate { get; set; }
         public bool AnimalsAllowed { get; set; }
+
+        /// <summary>
+        /// <para>0: Standby</para>
+        /// <para>1: Waiting to open</para>
+        /// <para>2: Driving</para>
+        /// <para>3: Finish</para>
+        /// </summary>
         public int Status { get; set; }
         public float TotalKM { get; set; }
 

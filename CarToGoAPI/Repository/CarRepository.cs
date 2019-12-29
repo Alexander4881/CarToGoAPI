@@ -37,6 +37,16 @@ namespace CarToGoAPI.Repository
             return DatabaseContext.Instance.Cars.ToList();
         }
 
+        public void UpdateStatusByCarID(int status, int carID)
+        {
+
+            Car currentCar = DatabaseContext.Instance.Cars.Where(c=>c.ID == carID).First();
+            currentCar.Status = 0;
+            this.Dispose();
+            currentCar.Status = status;
+            this.Dispose();
+
+        }
         public void Update(Car entity)
         {
             for (int i = 0; i < DatabaseContext.Instance.Cars.Count(); i++)

@@ -31,6 +31,15 @@ namespace CarToGoAPI.Repository
             return null;
         }
 
+        public OrderdCars FindByCarIdAndPinkCode(int carID, string pinkCode)
+        {
+             OrderdCars currentOrderCar = DatabaseContext.Instance.OrderdCars
+                .Where(c => c.CarID == carID )
+                .Where(c=> c.PinkCode == pinkCode )
+                .First();
+            return currentOrderCar;
+        }
+
         public void Add(OrderdCars entity)
         {
             DatabaseContext.Instance.OrderdCars.Add(entity);
@@ -39,6 +48,14 @@ namespace CarToGoAPI.Repository
         public List<OrderdCars> GetAll()
         {
             return DatabaseContext.Instance.OrderdCars.ToList();
+        }
+
+        public List<OrderdCars> GetOrderCarsByCustomerId(int customerId)
+        {
+            return DatabaseContext.Instance.OrderdCars
+                .Where(c => c.CustomerID == customerId)
+                .OrderBy(c => c.Status)
+                .ToList();
         }
 
         public void Update(OrderdCars entity)

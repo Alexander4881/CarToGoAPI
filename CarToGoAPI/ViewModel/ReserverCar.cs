@@ -10,4 +10,22 @@ namespace CarToGoAPI.ViewModel
         public int CustomerID { get; set; }
         public int CarID { get; set; }
     }
+
+    public class UnlockCar
+    {
+        public int CarID { get; set; }
+        public string PinkCode { get; set; }
+    }
+
+    public class TryPayment
+    {
+        public DateTime EndDT { get; set; }
+        public double Total { get; set; }
+    }
+
+    public class CheckOutOrder
+    {
+        public int OrderCarID { get; set; }
+        public int CustomerID { get; set; }
+    }
 }

@@ -35,12 +35,12 @@ namespace CarToGoAPI.Controllers
         public ActionResult<OrderdCars> Post([FromBody] ReserverCar value)
         {
 
+            CarRepository cr = new CarRepository();
+            cr.UpdateStatusByCarID(1, value.CarID);
 
             Helper.Helper helper = new Helper.Helper();
 
-            var orderCar = new OrderdCars { Status = 0, CreateDT = DateTime.Now, ValidityDT = DateTime.Now.AddMinutes(20), PinkCode = helper.GetPinkCode().ToString(), CustomerID = value.CustomerID, CarID = value.CarID};
-
-             
+            var orderCar = new OrderdCars { Status = 1, CreateDT = DateTime.Now, ValidityDT = DateTime.Now.AddMinutes(20), PinkCode = helper.GetPinkCode().ToString(), CustomerID = value.CustomerID, CarID = value.CarID};             
 
             OrderdCarsRepository oc = new OrderdCarsRepository();
             oc.Add(orderCar);
@@ -51,10 +51,32 @@ namespace CarToGoAPI.Controllers
 
         // POST: Reserve/unlock
         [Route("unlock")]
-        [HttpPost]
-        public string Unlock()
+        [HttpPost]        
+        public ActionResult<OrderdCars> Unlock([FromBody] UnlockCar value)
         {
-            return "abc";
+
+            OrderdCarsRepository oc = new OrderdCarsRepository();
+            CarRepository cr = new CarRepository();
+            OrderdCars currentOrder = oc.FindByCarIdAndPinkCode(value.CarID, value.PinkCode);
+            //return currentOrder;
+            if (!(currentOrder == null))
+            {
+                if (currentOrder.PinkCode == value.PinkCode)
+                {
+                    currentOrder.Status = 2;
+                    currentOrder.StarteDT = DateTime.Now;
+                    oc.Dispose();
+
+                    Car currentCar = cr.FindById(value.CarID);
+                    currentCar.Status = 2;
+                    cr.Dispose();
+
+                    return currentOrder;
+                }
+                return currentOrder;
+            } 
+
+            return null;
 
         }
 

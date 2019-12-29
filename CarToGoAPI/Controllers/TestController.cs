@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CarToGoAPI.Model;
+using CarToGoAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -23,6 +24,9 @@ namespace CarToGoAPI.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            CarRepository cr = new CarRepository();
+            cr.UpdateStatusByCarID(1, 2);
+
             TimeZoneInfo localZone = TimeZoneInfo.Local;
             string res1 = "Local Time Zone ID: {0}" + localZone.Id;
             res1 = res1 + "   Display Name is: {0}." + localZone.DisplayName;

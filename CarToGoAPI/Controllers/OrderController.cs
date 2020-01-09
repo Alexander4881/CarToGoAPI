@@ -24,6 +24,18 @@ namespace CarToGoAPI.Controllers
             return oc.GetOrderCarsByCustomerId(id);
         }
 
+        // GET: Order/5/getsecondsinterval
+        [Route("{id:int}/getsecondsinterval")]
+        [HttpGet]        
+        public int GetSecondsIntervalBetweenStartAndNow(int id)
+        {
+            OrderdCarsRepository oc = new OrderdCarsRepository();
+            OrderdCars currentOrderCar = oc.FindById(id);
+            DateTime startDT = (DateTime)currentOrderCar.StarteDT;
+            TimeSpan ts = DateTime.Now - startDT;
+            return Convert.ToInt32(Math.Round(ts.TotalSeconds,0));
+        }
+
         // GET: Order/5/TryPayment
         [Route("{id:int}/trypayment")]
         [HttpGet]
@@ -64,7 +76,7 @@ namespace CarToGoAPI.Controllers
                 {
                     
                     DateTime startDT = (DateTime)currentOrderCar.StarteDT;
-                    TimeSpan ts = DateTime.Now.AddMinutes(-1) - startDT;
+                    TimeSpan ts = DateTime.Now.AddSeconds(-20) - startDT;
                     double total = Math.Round(ts.TotalMinutes * currentOrderCar.Car.CarModel.PricePerMin, 1);
 
                     currentOrderCar.Status = 3;

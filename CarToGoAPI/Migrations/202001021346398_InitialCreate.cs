@@ -86,8 +86,8 @@
                 c => new
                     {
                         ID = c.Int(nullable: false),
-                        Longitude = c.Long(nullable: false),
-                        Latitude = c.Long(nullable: false),
+                        Latitude = c.Decimal(nullable: false, precision: 18, scale: 6),
+                        Longitude = c.Decimal(nullable: false, precision: 18, scale: 6),
                         Received = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
@@ -95,18 +95,28 @@
                 .Index(t => t.ID);
             
             CreateTable(
-                "dbo.CreditCard",
+                "dbo.OrderdCars",
                 c => new
                     {
-                        ID = c.Int(nullable: false),
-                        CreditCardNumber = c.String(),
-                        CreditCardHolder = c.String(),
-                        ExpiryDate = c.DateTime(nullable: false),
-                        Ccv = c.String(),
+                        ID = c.Int(nullable: false, identity: true),
+                        OrderNumber = c.String(),
+                        Status = c.Int(nullable: false),
+                        CreateDT = c.DateTime(nullable: false),
+                        StarteDT = c.DateTime(),
+                        EndDT = c.DateTime(),
+                        ValidityDT = c.DateTime(nullable: false),
+                        PinkCode = c.String(),
+                        QRCode = c.String(),
+                        DrivenKM = c.Single(),
+                        Total = c.Single(),
+                        CustomerID = c.Int(nullable: false),
+                        CarID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Customer", t => t.ID)
-                .Index(t => t.ID);
+                .ForeignKey("dbo.Car", t => t.CarID, cascadeDelete: true)
+                .ForeignKey("dbo.Customer", t => t.CustomerID, cascadeDelete: true)
+                .Index(t => t.CustomerID)
+                .Index(t => t.CarID);
             
             CreateTable(
                 "dbo.Customer",
@@ -125,6 +135,20 @@
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
+                "dbo.CreditCard",
+                c => new
+                    {
+                        ID = c.Int(nullable: false),
+                        CreditCardNumber = c.String(),
+                        CreditCardHolder = c.String(),
+                        ExpiryDate = c.DateTime(nullable: false),
+                        Ccv = c.String(),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Customer", t => t.ID)
+                .Index(t => t.ID);
+            
+            CreateTable(
                 "dbo.DirversLicens",
                 c => new
                     {
@@ -138,47 +162,32 @@
                 .ForeignKey("dbo.Customer", t => t.ID)
                 .Index(t => t.ID);
             
-            CreateTable(
-                "dbo.OrderdCars",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        OrderNumber = c.String(),
-                        CreateDate = c.DateTime(nullable: false),
-                        CustomeID = c.DateTime(nullable: false),
-                        StarteTime = c.DateTime(nullable: false),
-                        EndTime = c.DateTime(nullable: false),
-                        DrivenKM = c.Single(nullable: false),
-                        CarID_ID = c.Int(),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Car", t => t.CarID_ID)
-                .Index(t => t.CarID_ID);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.OrderdCars", "CarID_ID", "dbo.Car");
+            DropForeignKey("dbo.CarModel", "CarBandId", "dbo.CarBrand");
+            DropForeignKey("dbo.OrderdCars", "CustomerID", "dbo.Customer");
             DropForeignKey("dbo.DirversLicens", "ID", "dbo.Customer");
             DropForeignKey("dbo.CreditCard", "ID", "dbo.Customer");
-            DropForeignKey("dbo.CarModel", "CarBandId", "dbo.CarBrand");
+            DropForeignKey("dbo.OrderdCars", "CarID", "dbo.Car");
             DropForeignKey("dbo.GPSCordinat", "ID", "dbo.Car");
             DropForeignKey("dbo.EletricEngine", "ID", "dbo.Car");
             DropForeignKey("dbo.Car", "CarModelId", "dbo.CarModel");
             DropForeignKey("dbo.ArduinoMessage", "Arduino_ID", "dbo.RemoteDevice");
-            DropIndex("dbo.OrderdCars", new[] { "CarID_ID" });
             DropIndex("dbo.DirversLicens", new[] { "ID" });
             DropIndex("dbo.CreditCard", new[] { "ID" });
+            DropIndex("dbo.OrderdCars", new[] { "CarID" });
+            DropIndex("dbo.OrderdCars", new[] { "CustomerID" });
             DropIndex("dbo.GPSCordinat", new[] { "ID" });
             DropIndex("dbo.EletricEngine", new[] { "ID" });
             DropIndex("dbo.Car", new[] { "CarModelId" });
             DropIndex("dbo.CarModel", new[] { "CarBandId" });
             DropIndex("dbo.ArduinoMessage", new[] { "Arduino_ID" });
-            DropTable("dbo.OrderdCars");
             DropTable("dbo.DirversLicens");
-            DropTable("dbo.Customer");
             DropTable("dbo.CreditCard");
+            DropTable("dbo.Customer");
+            DropTable("dbo.OrderdCars");
             DropTable("dbo.GPSCordinat");
             DropTable("dbo.EletricEngine");
             DropTable("dbo.Car");

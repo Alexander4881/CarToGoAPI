@@ -9,13 +9,18 @@ namespace CarToGoAPI.Model
     class DatabaseContext : DbContext
     {
         //private readonly string conn = "Server = 192.168.1.10; Database=CarToGoAPI;User ID = sa; Password=Pa$$w0rd";
+
+        //private readonly string conn = "Server = localhost; Database=CarToGoAPITest;User ID = banksystem; Password=banksystem";
         private readonly string conn = "Server=.;Database=CarToGoAPI;Integrated Security=True;";
         private static DatabaseContext instance = null;
 
         public DatabaseContext() : base("CarToGoAPI")
         {
             this.Database.Connection.ConnectionString = conn;
-            Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseIfModelChanges<DatabaseContext>());
+            //Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseIfModelChanges<DatabaseContext>());
+            //Database.SetInitializer<DatabaseContext>(new DropCreateDatabaseAlways<DatabaseContext>());
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext, CarToGoAPI.Migrations.Configuration>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

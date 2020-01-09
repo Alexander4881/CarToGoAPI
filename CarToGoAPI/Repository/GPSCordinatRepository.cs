@@ -9,6 +9,11 @@ namespace CarToGoAPI.Repository
 {
     public class GPSCordinatRepository : IRepository<GPSCordinat>, IDisposable
     {
+        public void Add(GPSCordinat entity)
+        {
+            DatabaseContext.Instance.GPSCordinats.Add(entity);
+        }
+
         public void Delete(GPSCordinat entity)
         {
             DatabaseContext.Instance.GPSCordinats.Remove(entity);
@@ -38,13 +43,13 @@ namespace CarToGoAPI.Repository
 
         public void Update(GPSCordinat entity)
         {
-            for (int i = 0; i < DatabaseContext.Instance.GPSCordinats.Count(); i++)
+            foreach (GPSCordinat gpsCordinat in DatabaseContext.Instance.GPSCordinats)
             {
-                if (DatabaseContext.Instance.GPSCordinats.ElementAt(i).ID == entity.ID)
+                if (gpsCordinat.ID == entity.ID)
                 {
-                    DatabaseContext.Instance.GPSCordinats.ElementAt(i).Latitude = entity.Latitude;
-                    DatabaseContext.Instance.GPSCordinats.ElementAt(i).Longitude = entity.Longitude;
-                    DatabaseContext.Instance.GPSCordinats.ElementAt(i).Received = entity.Received;
+                    gpsCordinat.Latitude = entity.Latitude;
+                    gpsCordinat.Longitude = entity.Longitude;
+                    gpsCordinat.Received = entity.Received;
                 }
             }
         }

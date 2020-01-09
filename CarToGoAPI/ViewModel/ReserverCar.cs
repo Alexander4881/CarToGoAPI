@@ -17,6 +17,13 @@ namespace CarToGoAPI.ViewModel
         public string PinkCode { get; set; }
     }
 
+    public class GPSPostCordinat
+    {
+        public int CarID { get; set; }
+        public Decimal Latitude { get; set; }
+        public Decimal Longitude { get; set; }
+    }
+
     public class TryPayment
     {
         public DateTime EndDT { get; set; }

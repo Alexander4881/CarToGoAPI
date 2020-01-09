@@ -10,6 +10,16 @@ namespace CarToGoAPI.Model
     [Table("GPSCordinat")]
     public class GPSCordinat : IEntity
     {
+        public GPSCordinat(){}
+        public GPSCordinat(int id,decimal latitude, decimal longitude, DateTime received, Car car)
+        {
+            ID = id;
+            Latitude = latitude;
+            Longitude = longitude;
+            Received = received;
+            Car = car;
+        }
+
         // Properties
         public int ID { get; set; }        
         public Decimal Latitude { get; set; }        

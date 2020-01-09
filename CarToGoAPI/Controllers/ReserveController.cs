@@ -52,7 +52,7 @@ namespace CarToGoAPI.Controllers
         // POST: Reserve/unlock
         [Route("unlock")]
         [HttpPost]        
-        public ActionResult<OrderdCars> Unlock([FromBody] UnlockCar value)
+        public bool Unlock([FromBody] UnlockCar value)
         {
 
             OrderdCarsRepository oc = new OrderdCarsRepository();
@@ -71,13 +71,10 @@ namespace CarToGoAPI.Controllers
                     currentCar.Status = 2;
                     cr.Dispose();
 
-                    return currentOrder;
+                    return true;
                 }
-                return currentOrder;
             } 
-
-            return null;
-
+            return false;
         }
 
         // PUT: Reserve/5

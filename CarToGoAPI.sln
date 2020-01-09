@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarToGoAPI", "CarToGoAPI\CarToGoAPI.csproj", "{93F5C4C4-5693-431A-BB4A-43D31B594D98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarToGoAPI.Tests", "CarToGoAPI.Tests\CarToGoAPI.Tests.csproj", "{6873967E-68BF-4D47-88C8-B46421820C68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{93F5C4C4-5693-431A-BB4A-43D31B594D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93F5C4C4-5693-431A-BB4A-43D31B594D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93F5C4C4-5693-431A-BB4A-43D31B594D98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6873967E-68BF-4D47-88C8-B46421820C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6873967E-68BF-4D47-88C8-B46421820C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6873967E-68BF-4D47-88C8-B46421820C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6873967E-68BF-4D47-88C8-B46421820C68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

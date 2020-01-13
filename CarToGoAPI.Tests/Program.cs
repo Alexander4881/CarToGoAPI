@@ -11,7 +11,7 @@ namespace CarToGoAPI.Tests
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Maina(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
         }

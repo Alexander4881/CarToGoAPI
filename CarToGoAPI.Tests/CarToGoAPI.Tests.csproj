@@ -12,4 +12,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CarToGoAPI\CarToGoAPI.csproj" />
+  </ItemGroup>
+
 </Project>
